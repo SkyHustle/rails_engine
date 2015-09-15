@@ -4,4 +4,8 @@ class Api::V1::ItemsController < ApplicationController
   def show
     respond_with Item.find_by(id: params[:id])
   end
+
+  def find
+    respond_with Item.find_by_attribute(params)
+  end
 end

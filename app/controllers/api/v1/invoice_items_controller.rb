@@ -4,4 +4,8 @@ class Api::V1::InvoiceItemsController < ApplicationController
   def show
     respond_with InvoiceItem.find_by(id: params[:id])
   end
+
+  def find
+    respond_with InvoiceItem.find_by_attribute(params)
+  end
 end
