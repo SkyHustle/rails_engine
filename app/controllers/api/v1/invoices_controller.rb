@@ -12,4 +12,8 @@ class Api::V1::InvoicesController < ApplicationController
   def find_all
     respond_with Invoice.find_all_by_attribute(params)
   end
+
+  def random
+    respond_with Invoice.order("RANDOM()").first
+  end
 end

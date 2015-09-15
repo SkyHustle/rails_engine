@@ -12,4 +12,8 @@ class Api::V1::MerchantsController < ApplicationController
   def find_all
     respond_with Merchant.find_all_by_attribute(params)
   end
+
+  def random
+    respond_with Merchant.order("RANDOM()").first
+  end
 end

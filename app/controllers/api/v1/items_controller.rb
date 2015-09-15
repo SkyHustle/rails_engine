@@ -12,4 +12,8 @@ class Api::V1::ItemsController < ApplicationController
   def find_all
     respond_with Item.find_all_by_attribute(params)
   end
+
+  def random
+    respond_with Item.order("RANDOM()").first
+  end
 end
