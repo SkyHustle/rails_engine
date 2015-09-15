@@ -6,17 +6,10 @@ class Invoice < ActiveRecord::Base
   belongs_to :merchant
 
   def self.find_by_attribute(params)
-    value = params.values.first
-    key   = params.keys.first
-
-    return Invoice.find_by(key => value)
-    # Invoice.where("#{key} ILIKE ?", "#{value}").first
+    where(params).first
   end
 
   def self.find_all_by_attribute(params)
-    value = params.values.first
-    key   = params.keys.first
-
-    return Invoice.where(key => value)
+    where(params)
   end
 end

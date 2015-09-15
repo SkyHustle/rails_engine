@@ -10,14 +10,20 @@ class Api::V1::TransactionsController < ApplicationController
   end
 
   def find
-    respond_with Transaction.find_by_attribute(params)
+    respond_with Transaction.find_by_attribute(transaction_params)
   end
 
   def find_all
-    respond_with Transaction.find_all_by_attribute(params)
+    respond_with Transaction.find_all_by_attribute(transaction_params)
   end
 
   def random
     respond_with Transaction.order("RANDOM()").first
+  end
+
+  private
+
+  def transaction_params
+    params.permit(:id, :invoice_id, :credit_card_number, :result, :created_at, :updated_at)
   end
 end
