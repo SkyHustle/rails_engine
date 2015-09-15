@@ -5,7 +5,9 @@ class Customer < ActiveRecord::Base
     value = params.values.first
     key   = params.keys.first
 
-    return Customer.find_by(key => value)
+    # return Customer.find_by(key => value)
+
+    Customer.where("#{key} ILIKE ?", "#{value}").first
 
     # if params[:first_name]
     #   return Customer.find_by_first_name(params[:first_name])
