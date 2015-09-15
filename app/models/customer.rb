@@ -1,13 +1,13 @@
 class Customer < ActiveRecord::Base
   has_many :invoices
 
-  def self.find_by_attribute(params)
-    value = params.values.first
-    key   = params.keys.first
+    def self.find_by_attribute(params)
+      value = params.values.first
+      key   = params.keys.first
+
+      Customer.where("#{key} ILIKE ?", "#{value}").first
 
     # return Customer.find_by(key => value)
-
-    Customer.where("#{key} ILIKE ?", "#{value}").first
 
     # if params[:first_name]
     #   return Customer.find_by_first_name(params[:first_name])
