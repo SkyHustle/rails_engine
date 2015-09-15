@@ -10,14 +10,7 @@ class Invoice < ActiveRecord::Base
     key   = params.keys.first
 
     return Invoice.find_by(key => value)
-
-    # if params[:customer_id]
-    #   return Invoice.find_by_customer_id(params[:customer_id])
-    # elsif params[:merchant_id]
-    #   return Invoice.find_by_merchant_id(params[:merchant_id])
-    # elsif params[:status]
-    #   return Invoice.find_by_status(params[:status])
-    # end
+    # Invoice.where("#{key} ILIKE ?", "#{value}").first
   end
 
   def self.find_all_by_attribute(params)
