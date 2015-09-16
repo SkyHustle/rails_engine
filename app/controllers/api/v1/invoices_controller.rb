@@ -21,6 +21,26 @@ class Api::V1::InvoicesController < ApplicationController
     respond_with Invoice.order("RANDOM()").first
   end
 
+  def invoice_transactions
+    respond_with Invoice.find_transactions(invoice_params)
+  end
+
+  def invoice_items
+    respond_with Invoice.find_invoice_items(invoice_params)
+  end
+
+  def items
+    respond_with Invoice.find_items(invoice_params)
+  end
+
+  def customer
+    respond_with Invoice.find_customer(invoice_params)
+  end
+
+  def merchant
+    respond_with Invoice.find_merchant(invoice_params)
+  end
+
   private
 
   def invoice_params

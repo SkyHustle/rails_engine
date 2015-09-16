@@ -12,4 +12,24 @@ class Invoice < ActiveRecord::Base
   def self.find_all_by_attribute(params)
     where(params)
   end
+
+  def self.find_transactions(params)
+    where(params).first.transactions
+  end
+
+  def self.find_invoice_items(params)
+    where(params).first.invoice_items
+  end
+
+  def self.find_items(params)
+    where(params).first.items
+  end
+
+  def self.find_customer(params)
+    where(params).first.customer
+  end
+
+  def self.find_merchant(params)
+    where(params).first.merchant
+  end
 end
