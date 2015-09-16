@@ -35,6 +35,7 @@ task :import => :environment do
 
   CSV.foreach(file_2, headers: true, header_converters: :symbol) do |row|
     InvoiceItem.create!({:id         => row[:id],
+                         :invoice_id => row[:invoice_id],
                          :item_id    => row[:item_id],
                          :quantity   => row[:quantity],
                          :unit_price => row[:unit_price].to_f / 100,
