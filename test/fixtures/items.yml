@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+item_one:
   name: "Item Qui Esse"
   description: "Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro."
   unit_price: 75107
-  merchant_id: 1
+  merchant: merchant_one
 
-two:
+item_two:
   name: "Item Autem Minima"
   description: "Cumque consequuntur ad."
   unit_price: 67076
-  merchant_id: 1
+  merchant: merchant_two
