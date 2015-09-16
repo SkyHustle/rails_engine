@@ -9,4 +9,12 @@ class Merchant < ActiveRecord::Base
   def self.find_all_by_attribute(params)
     where(params)
   end
+
+  def self.find_merchant_items(params)
+    where(params).first.items
+  end
+
+  def self.find_merchant_invoices(params)
+    where(params).first.invoices
+  end
 end
