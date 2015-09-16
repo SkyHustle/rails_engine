@@ -7,9 +7,8 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "Item Autem Minima",       item[:name]
-    assert_equal "Cumque consequuntur ad.", item[:description]
-    assert_equal "67076.0",                 item[:unit_price]
-    assert_equal 1,                         item[:merchant_id]
+    assert_equal "Item Qui Esse",           item[:name]
+    assert_equal "Nihil autem sit odio",    item[:description]
+    assert_equal "75107.0",                 item[:unit_price]
   end
 end
