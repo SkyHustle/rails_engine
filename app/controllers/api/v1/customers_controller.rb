@@ -21,6 +21,14 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.order("RANDOM()").first
   end
 
+  def invoices
+    respond_with Customer.find_invoices(customer_params)
+  end
+
+  def transactions
+    respond_with Customer.find_transactions(customer_params)
+  end
+
   private
 
   def customer_params
