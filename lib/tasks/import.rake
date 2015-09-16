@@ -23,11 +23,24 @@ task :import => :environment do
   end
 
   CSV.foreach(file_4, headers: true, header_converters: :symbol) do |row|
-    Item.create!(row.to_hash)
+    Item.create!({:id          => row[:id],
+                  :name        => row[:name],
+                  :description => row[:description],
+                  :unit_price  => row[:unit_price].to_f / 100,
+                  :merchant_id => row[:merchant_id],
+                  :created_at  => row[:created_at],
+                  :updated_at  => row[:updated_at]
+                 })
   end
 
   CSV.foreach(file_2, headers: true, header_converters: :symbol) do |row|
-    InvoiceItem.create!(row.to_hash)
+    InvoiceItem.create!({:id         => row[:id],
+                         :item_id    => row[:item_id],
+                         :quantity   => row[:quantity],
+                         :unit_price => row[:unit_price].to_f / 100,
+                         :created_at => row[:created_at],
+                         :updated_at => row[:updated_at]
+                        })
   end
 
   CSV.foreach(file_6, headers: true, header_converters: :symbol) do |row|
