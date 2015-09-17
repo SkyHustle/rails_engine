@@ -30,4 +30,15 @@ class Item < ActiveRecord::Base
       Item.find(item_id)
     end
   end
+
+  def self.top_items(quantity)
+    ids_of_items = Invoice.successful.joins(:items).
+        group(:item_id).sum(:quantity).
+        sort_by {|id_revenue| id_revenue.last}.
+        reverse.first(quantity).map(&:first)
+
+    ids_of_items.map do |item_id|
+      Item.find(item_id)
+    end
+  end
 end
