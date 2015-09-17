@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get "transactions/find", to: "transactions#find"
       resources :transactions, only: [:show, :index]
 
+      get "/items/:id/best_day", to: "items#best_day"
       get "items/most_items", to: "items#most_items"
       get "items/most_revenue", to: "items#most_revenue"
       get "items/:id/merchant", to: "items#merchant"

@@ -41,4 +41,13 @@ class Item < ActiveRecord::Base
       Item.find(item_id)
     end
   end
+
+  def best_day
+    { best_day: invoices.successful.group('"invoices"."created_at"')
+      .sum("quantity * unit_price")
+      .sort_by(&:last)
+      .map(&:first)
+      .last
+    }
+  end
 end
