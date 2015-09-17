@@ -35,4 +35,12 @@ class Merchant < ActiveRecord::Base
   def self.total_revenue_for_date(date)
     { "total_revenue" => Invoice.all.successful.where(created_at: date).joins(:invoice_items).sum("quantity * unit_price") }
   end
+
+  def merchant_revenue
+    { "revenue" => invoices.successful.joins(:invoice_items).sum("quantity * unit_price") }
+  end
+
+  def revenue_for_date(date)
+    { "revenue" => invoices.successful.where(created_at: date).joins(:invoice_items).sum("quantity * unit_price") }
+  end
 end
