@@ -19,4 +19,15 @@ class Item < ActiveRecord::Base
   def self.find_merchant(params)
     where(params).first.merchant
   end
+
+  def self.top_revenue(quantity)
+    ids_of_items = Invoice.successful.joins(:items).group(:item_id).
+        sum(('quantity * invoice_items.unit_price / 100')).
+        sort_by {|id_revenue_pair| id_revenue_pair.last}
+        .reverse.first(quantity).map(&:first)
+
+    ids_of_items.map do |item_id|
+      Item.find(item_id)
+    end
+  end
 end
