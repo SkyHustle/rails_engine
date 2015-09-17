@@ -36,8 +36,4 @@ class Invoice < ActiveRecord::Base
   def self.successful
     joins(:transactions).where("result = 'success'")
   end
-
-   def self.failed
-    joins(:transactions).where("result = 'failed'")
-  end
 end

@@ -51,9 +51,4 @@ class Merchant < ActiveRecord::Base
 
     Customer.find(customer_id)
   end
-
-  def pending_invoice_customers
-  end
-
-  
 end
