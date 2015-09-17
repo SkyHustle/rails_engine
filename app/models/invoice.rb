@@ -32,4 +32,8 @@ class Invoice < ActiveRecord::Base
   def self.find_merchant(params)
     where(params).first.merchant
   end
+
+  def self.successful
+    joins(:transactions).where("result = 'success'")
+  end
 end
