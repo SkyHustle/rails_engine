@@ -1,3 +1,12 @@
+### Instructions
+
+* clone the project: git clone git@github.com:Dmitry1007/rails_engine.git
+* bundle
+* create your database with rake db:create
+* run the migrations with rake db:migrate
+* import and parse the csv data with the customer rake task, be rake import
+* start the server with rails s
+
 ## Project Description
 
 In this project, I will use Rails and ActiveRecord to build a JSON API which exposes the SalesEngine data schema.
