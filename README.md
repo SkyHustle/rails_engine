@@ -1,6 +1,6 @@
 ### Instructions
 
-* clone the project: git clone git@github.com:Dmitry1007/rails_engine.git
+* clone the project: git clone `git@github.com:Dmitry1007/rails_engine.git`
 * bundle
 * create your database with rake db:create
 * run the migrations with rake db:migrate
