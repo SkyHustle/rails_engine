@@ -7,9 +7,8 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     invoice_item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 532,       invoice_item[:item_id]
-    assert_equal 8,         invoice_item[:quantity]
-    assert_equal "34873.0", invoice_item[:unit_price]
+    assert_equal 5,         invoice_item[:quantity]
+    assert_equal "13635.0", invoice_item[:unit_price]
   end
 
   test "#index" do
@@ -20,7 +19,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 2,   invoice_items.count
-    assert_equal 539, invoice_item[:item_id]
+    assert_equal "13635.0", invoice_item[:unit_price]
   end
 
   test "#find" do
@@ -29,7 +28,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     invoice_item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "34873.0", invoice_item[:unit_price]
+    assert_equal "13635.0", invoice_item[:unit_price]
   end
 
   test "#find_all" do
@@ -40,7 +39,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 1,           invoice_items.count
-    assert_equal "34873.0",   invoice_item[:unit_price]
+    assert_equal "13635.0",   invoice_item[:unit_price]
   end
 
   test "#random" do
@@ -63,7 +62,6 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
   end
 
   test "#item" do
-    skip
     get :item, format: :json, id: InvoiceItem.first.id
 
     items = JSON.parse(response.body, symbolize_names: true)

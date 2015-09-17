@@ -71,7 +71,7 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal Array, invoices.class
     assert_equal Hash,  invoices.first.class
-    assert_equal invoice[:id], InvoiceItem.last.id
+    assert_equal invoice[:id], InvoiceItem.first.id
   end
 
   test "#items" do
