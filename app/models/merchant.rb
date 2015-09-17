@@ -43,4 +43,12 @@ class Merchant < ActiveRecord::Base
   def revenue_for_date(date)
     { "revenue" => invoices.successful.where(created_at: date).joins(:invoice_items).sum("quantity * unit_price") }
   end
+
+  def favorite_customer
+    customer_id = invoices.successful.group_by do |invoice|
+      invoice.customer_id
+    end.sort_by { |id, invoice| invoice.count }.reverse.first.first
+
+    Customer.find(customer_id)
+  end
 end
