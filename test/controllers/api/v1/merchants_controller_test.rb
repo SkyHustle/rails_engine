@@ -72,4 +72,14 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_equal Array, invoices.class
     assert_equal "shipped", invoice[:status]
   end
+
+  test "#most_revenue" do
+    get :most_revenue, format: :json, quantity: 2
+
+    invoices = JSON.parse(response.body, symbolize_names: true)
+    invoice  = invoices.first
+
+    assert_response :success
+    assert_equal Array, invoices.class
+  end
 end

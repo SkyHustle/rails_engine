@@ -72,4 +72,37 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal Hash, merchants.class
   end
+
+  test "#most_revenue" do
+    get :most_revenue, format: :json, quantity: 2
+
+    merchants = JSON.parse(response.body, symbolize_names: true)
+    merchant  = merchants.first
+
+    assert_response :success
+    assert_equal Array, merchants.class
+    assert_equal 1, merchants.count
+  end
+
+  test "#most_items" do
+    get :most_items, format: :json, quantity: 2
+
+    merchants = JSON.parse(response.body, symbolize_names: true)
+    merchant  = merchants.first
+
+    assert_response :success
+    assert_equal Array, merchants.class
+    assert_equal 1, merchants.count
+  end
+
+  test "#best_day" do
+    get :best_day, format: :json, id: Item.first.id
+
+    merchants = JSON.parse(response.body, symbolize_names: true)
+    merchant  = merchants.first
+
+    assert_response :success
+    assert_equal Hash, merchants.class
+    assert_equal 1, merchants.count
+  end
 end

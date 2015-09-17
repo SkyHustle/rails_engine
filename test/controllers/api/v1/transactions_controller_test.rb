@@ -7,8 +7,8 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
     transaction = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "4411510861233607", transaction[:credit_card_number]
-    assert_equal "failed",           transaction[:result]
+    assert_equal "4654405418249632", transaction[:credit_card_number]
+    assert_equal "success",           transaction[:result]
   end
 
   test "#index" do
@@ -38,7 +38,7 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal 1,         transactions.count
-    assert_equal "failed", transaction[:result]
+    assert_equal "success", transaction[:result]
   end
 
   test "#random" do
