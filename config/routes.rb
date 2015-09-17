@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      get "merchants/revenue", to: "merchants#revenue_by_date"
+      get "merchants/most_items", to: "merchants#most_items"
       get "/merchants/most_revenue", to: "merchants#most_revenue"
       get "merchants/:id/invoices", to: "merchants#merchant_invoices"
       get "merchants/:id/items", to: "merchants#merchant_items"
